@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String            @id @default(uuid())
+  username      String            @unique
+  email         String            @unique
+  password      String
+  profileImage  String?
+  createdAt     DateTime          @default(now())
+  followers     Follow[]          @relation("followerRelation")
+  following     Follow[]          @relation("followingRelation")
+  likes         Like[]
+  reviews       Review[]
+  movieStatuses UserMovieStatus[]
+
+  @@map("users")
+}
+
+model Movie {
+  id          String            @id @default(uuid())
+  tmdbId      Int               @unique
+  title       String
+  posterUrl   String
+  releaseDate DateTime?
+  genre       String?
+  reviews     Review[]
+  statuses    UserMovieStatus[]
+
+  @@map("movies")
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  userId    String
+  movieId   String
+  rating    Int
+  comment   String
+  emotion   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  likes     Like[]
+  movie     Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId])
+  @@map("reviews")
+}
+
+model Like {
+  id        String   @id @default(uuid())
+  userId    String
+  reviewId  String
+  createdAt DateTime @default(now())
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, reviewId])
+  @@map("likes")
+}
+
+model Follow {
+  id          String   @id @default(uuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+  follower    User     @relation("followerRelation", fields: [followerId], references: [id], onDelete: Cascade)
+  following   User     @relation("followingRelation", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@map("follows")
+}
+
+model UserMovieStatus {
+  id        String   @id @default(uuid())
+  userId    String
+  movieId   String
+  status    Status
+  addedAt   DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  movie     Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, movieId])
+  @@map("user_movie_statuses")
+}
+
+enum Status {
+  WATCHLIST
+  WATCHED
+}
