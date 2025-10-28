@@ -1,21 +1,19 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import BottomNav from "@/components/BottomNav";
-const inter = Inter({ subsets: ["latin"] });
+import './globals.css';
+import { Space_Grotesk } from 'next/font/google';
+import BottomNav from '@/components/BottomNav';
+import Header from '@/components/Header';
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
 
 export const metadata = {
-  title: "SIGN",
-  description: "Emotion-based cinema archive",
+  title: 'Cinelog',
+  description: 'Emotion-based cinema archive',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${inter.className} bg-background text-foreground`}>
+      <body className={`${spaceGrotesk.className} bg-background text-foreground`}>
+        <Header />
         {children}
         <BottomNav />
       </body>
