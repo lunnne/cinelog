@@ -1,15 +1,11 @@
-import { prisma } from '@/lib/prisma';
+import ReviewSection from '@/components/ReviewSection';
+import MovieSection from '@/components/MovieSection';
 
 export default async function HomePage() {
-  const reviews = await prisma.review.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-  });
   return (
-    <main className="p-6 space-y-6">
-      {/* <WriteModal /> */}
-      
+    <main className="pt-20 pb-24">
+      <ReviewSection />
+      <MovieSection />
     </main>
   );
 }
