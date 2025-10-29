@@ -34,9 +34,9 @@ export default function ReviewSection() {
   ];
 
   return (
-    <section className="px-6 mt-6">
-      <h2 className="section-title">🎞 최근 리뷰</h2>
-      <div className="flex gap-4 overflow-x-auto snap-x scrollbar-hide pb-4">
+    <section className="px-6 mt-10 mb-10">
+      <h2 className="section-title text-3xl font-bold mb-6">🎞 최근 리뷰</h2>
+      <div className="flex gap-4 overflow-x-auto snap-x scrollbar-hide py-4">
         {reviews.map((review, i) => (
           <ReviewCard key={i} {...review} />
         ))}
