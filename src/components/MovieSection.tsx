@@ -10,13 +10,12 @@ interface Movie {
 
 export default async function MovieSection() {
   const data = await getPopularMovies();
-  console.log(data);
   const movies = data.results;
 
   return (
-    <section className="mt-10">
-      <h2 className="text-xl font-semibold mb-5 px-6 text-foreground">🔥 인기 영화</h2>
-      <div className="flex overflow-x-auto gap-5 px-6 scrollbar-hide">
+    <section className="px-6 mt-10">
+      <h2 className="text-xl font-semibold mb-5 px-6 text-foreground">🔥인기 영화</h2>
+      <div className="flex overflow-x-auto gap-5 px-6 scrollbar-hide pt-5 pb-12">
         {movies.map((movie: Movie, index: number) =>
           movie.poster_path ? (
           <MovieCard key={movie.id}
