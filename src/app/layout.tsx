@@ -2,7 +2,8 @@ import './globals.css';
 import { Space_Grotesk } from 'next/font/google';
 import BottomNav from '@/components/BottomNav';
 import Header from '@/components/Header';
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
+const SpaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
+
 
 export const metadata = {
   title: 'Cinelog',
@@ -12,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body className={`${spaceGrotesk.className} bg-background text-foreground`}>
+      <body className={`${SpaceGrotesk.className} bg-background text-foreground`}>
         <Header />
         {children}
         <BottomNav />

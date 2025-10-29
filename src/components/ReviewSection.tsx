@@ -1,7 +1,7 @@
 "use client";
 
 import ReviewCard from "./ReviewCard";
-
+import { MultiBubble } from 'iconoir-react';
 export default function ReviewSection() {
   const reviews = [
     {
@@ -34,11 +34,11 @@ export default function ReviewSection() {
   ];
 
   return (
-    <section className="px-6 mt-6">
-      <h2 className="section-title">🎞 최근 리뷰</h2>
-      <div className="flex gap-4 overflow-x-auto snap-x scrollbar-hide pb-4">
+    <section className="px-6 mt-10">
+      <h2 className="text-xl font-semibold mb-5 px-6 text-foreground flex items-center gap-2"><MultiBubble color="#7c3aed" width={24} height={24} />따끈한 리뷰 도착!</h2>
+      <div className="flex gap-5 px-6 overflow-x-auto snap-x scrollbar-hide pb-6 pt-5  ">
         {reviews.map((review, i) => (
-          <ReviewCard key={i} {...review} />
+          <ReviewCard key={i} title={review.title} content={review.comment} rating={review.rating} posterUrl={review.posterUrl} />
         ))}
       </div>
     </section>
