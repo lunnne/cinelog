@@ -99,7 +99,7 @@ export default function MovieDetailPage() {
           <p className="text-gray-400 text-sm">
             {movie.releaseDate?.slice(0, 4)} ·{" "}
             {movie.genres?.map((g) => g.name).join(", ")}{" "}
-            {movie.runtime ? `· ${movie.runtime} mins` : ""}
+            {movie.runtime ? `${movie.runtime}분` : ""}
           </p>
 
           {/* 별점 */}
