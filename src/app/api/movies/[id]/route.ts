@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 
 export async function GET(_: Request, { params }: { params: { id: string } }) {
-  const { id } = await params;
+  const { id } = params;
   const movieId = Number(id);
   if (!movieId) {
     return NextResponse.json({ error: 'Invalid movie ID' }, { status: 400 });
