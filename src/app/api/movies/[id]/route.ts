@@ -18,16 +18,18 @@ export async function GET(_: Request, { params }: { params: { id: string } }) {
       return NextResponse.json(existingMovie);
     }
     // 2️⃣ 없으면 TMDB에서 가져오기
-    const tmdbRes = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${TMDB_API_KEY}&language=en-US`);
+    const tmdbRes = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${TMDB_API_KEY}&language=ko-KR`);
     if (!tmdbRes.ok) {
       return NextResponse.json({ error: 'Failed to fetch movie from TMDB' }, { status: 500 });
     }
     const tmdbData = await tmdbRes.json();  
+    console.log(tmdbData);
     // 3️⃣ DB에 저장
     const newMovie = await prisma.movie.create({
       data: {
         id: movieId,
         title: tmdbData.title,
+        overview: tmdbData.overview || '',
         posterUrl: tmdbData.poster_path ? `https://image.tmdb.org/t/p/w500${tmdbData.poster_path}` : '',
         backdropUrl: tmdbData.backdrop_path ? `https://image.tmdb.org/t/p/original${tmdbData.backdrop_path}` : '',
         releaseDate: tmdbData.release_date || '',
