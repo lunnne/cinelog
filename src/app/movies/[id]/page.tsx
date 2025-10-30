@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Play, Star } from 'lucide-react';
+import { Play } from 'lucide-react';
 
 interface Movie {
   id: number;
@@ -53,24 +53,26 @@ export default function MovieDetailPage() {
           {/* 왼쪽 텍스트 영역 */}
           <div className="flex-1 space-y-4">
             <div className="flex flex-row gap-4 items-start">
-              <div className="flex-1 space-y-2 md:space-y-4">
-                <h1 className="text-xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">{movie.title}</h1>
-
+              <div className="flex-1 space-y-2 md:space-y-4 py-2">
+                {/* 타이틀 */}
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">{movie.title}</h1>
                 {movie.originalTitle && <p className="text-gray-400 text-xs sm:text-sm italic">{movie.originalTitle}</p>}
-
                 <p className="text-xs sm:text-sm text-gray-400">
                   {movie.releaseDate?.slice(0, 4)} · {movie.runtime ? `${movie.runtime}분` : 'N/A'}
                 </p>
-
+                {/* 장르 */}
                 <div className="flex flex-wrap gap-2 mt-1">
                   {movie.genres?.map((g) => (
-                    <span key={g} className="px-2 py-0.5 text-xs rounded-full bg-violet-600/20 border border-violet-500/30 text-violet-300">
+                    <span
+                      key={g}
+                      className="px-2 py-0.5 text-xs md:text-sm rounded-full bg-violet-600/20 border border-violet-500/30 text-violet-300"
+                    >
                       {g}
                     </span>
                   ))}
                 </div>
-
-                <button className="flex items-center gap-2 px-4 py-2 mt-2 bg-violet-600/20 hover:bg-violet-600/40 rounded-lg border border-violet-500/30 text-sm text-violet-300 transition">
+                {/* 트레일러 버튼 */}
+                <button className="flex items-center gap-2 px-4 py-2 mt-5 bg-violet-600/20 hover:bg-violet-600/40 rounded-lg border border-violet-500/30 text-sm text-violet-300 transition">
                   <Play className="w-4 h-4" />
                   TRAILER
                 </button>
@@ -81,20 +83,11 @@ export default function MovieDetailPage() {
                 <Image src={movie.posterUrl || '/fallback.jpg'} alt={movie.title} fill className="object-cover" />
               </div>
             </div>
-            {/* Tagline + Overview (연결형)
-<div className="mt-4">
-  <p className="text-sm sm:text-base leading-relaxed text-gray-300">
-    {movie.tagline && (
-      <span className="text-violet-400 text-xl sm:text-2xl font-semibold mr-2">
-        {"\"" + movie.tagline + "\""}
-      </span>
-    )}
-    {movie.overview || "No description available."}
-  </p>
-</div> */}
             <div className="mt-4">
-              {movie.tagline && <p className="text-violet-400 text-lg sm:text-xl italic font-semibold mb-2 leading-snug">{'"' + movie.tagline + '"'}</p>}
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{movie.overview || 'No description available.'}</p>
+              {movie.tagline && (
+                <p className="text-violet-400 text-lg sm:text-xl italic font-semibold mb-2 leading-snug">{'"' + movie.tagline + '"'}</p>
+              )}
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{movie.overview || '이 영화는 아직 소개가 없어요🫣'}</p>
             </div>
           </div>
         </div>
