@@ -21,7 +21,7 @@ export default function ReviewCard({ title, content, rating }: ReviewCardProps) 
         ${hovered
           ? "border-accent/50 shadow-[0_0_35px_rgba(124,58,237,0.25)] scale-[1.02]"
           : "border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.6)]"}
-        bg-gradient-to-br from-[#101012]/70 to-[#0a0a0c]/40 backdrop-blur-xl
+        bg-linear-to-br from-[#101012]/70 to-[#0a0a0c]/40 backdrop-blur-xl
       `}
     >
       {/* 부드러운 글래스 빛 테두리 효과 */}
@@ -53,7 +53,7 @@ export default function ReviewCard({ title, content, rating }: ReviewCardProps) 
       {/* 보라빛 글래스 반사 효과 */}
       <div
         className={`absolute inset-0 rounded-2xl transition-opacity duration-700 pointer-events-none ${
-          hovered ? "opacity-20 bg-gradient-to-tr from-accent/20 to-transparent" : "opacity-0"
+          hovered ? "opacity-20 bg-linear-to-tr from-accent/20 to-transparent" : "opacity-0"
         }`}
       />
     </div>

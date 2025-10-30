@@ -24,22 +24,24 @@ model User {
 }
 
 model Movie {
-  id          String            @id @default(uuid())
-  tmdbId      Int               @unique
+  id          Int      @id
   title       String
-  posterUrl   String
-  releaseDate DateTime?
-  genre       String?
-  reviews     Review[]
-  statuses    UserMovieStatus[]
+  overview    String?
+  posterUrl   String?
+  backdropUrl String?
+  releaseDate String?
+  runtime     Int?
+  voteAverage Float?
+  createdAt   DateTime @default(now())
 
-  @@map("movies")
+  reviews  Review[]
+  statuses UserMovieStatus[]
 }
 
 model Review {
   id        String   @id @default(uuid())
   userId    String
-  movieId   String
+  movieId   Int
   rating    Int
   comment   String
   emotion   String
@@ -80,7 +82,7 @@ model Follow {
 model UserMovieStatus {
   id        String   @id @default(uuid())
   userId    String
-  movieId   String
+  movieId   Int
   status    Status
   addedAt   DateTime @default(now())
   updatedAt DateTime @updatedAt
