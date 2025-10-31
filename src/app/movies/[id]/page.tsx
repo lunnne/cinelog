@@ -94,11 +94,11 @@ export default function MovieDetailPage() {
                   expanded ? 'line-clamp-none' : 'line-clamp-5'
                 }`}
               >
-                {movie.overview || 'No description available.'}
+                {movie.overview || '이 영화는 아직 소개가 없어요🫣'}
               </div>
               {movie.overview && movie.overview.length > 300 && (
                 <button onClick={() => setExpanded(!expanded)} className="mt-2 text-violet-400 text-sm font-medium hover:text-violet-300 transition">
-                  {expanded ? '접기 ▲' : '더보기 ▼'}
+                  {expanded ? '접기 ▲' : '더읽기 ▼'}
                 </button>
               )}
             </div>
