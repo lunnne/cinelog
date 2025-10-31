@@ -25,6 +25,7 @@ interface Movie {
 export default function MovieDetailPage() {
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie | null>(null);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -87,7 +88,19 @@ export default function MovieDetailPage() {
               {movie.tagline && (
                 <p className="text-violet-400 text-lg sm:text-xl italic font-semibold mb-2 leading-snug">{'"' + movie.tagline + '"'}</p>
               )}
-              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{movie.overview || '이 영화는 아직 소개가 없어요🫣'}</p>
+              {/* overview */}
+              <div
+                className={`text-gray-300 text-sm sm:text-base leading-relaxed transition-all duration-300 ${
+                  expanded ? 'line-clamp-none' : 'line-clamp-5'
+                }`}
+              >
+                {movie.overview || 'No description available.'}
+              </div>
+              {movie.overview && movie.overview.length > 300 && (
+                <button onClick={() => setExpanded(!expanded)} className="mt-2 text-violet-400 text-sm font-medium hover:text-violet-300 transition">
+                  {expanded ? '접기 ▲' : '더보기 ▼'}
+                </button>
+              )}
             </div>
           </div>
         </div>
