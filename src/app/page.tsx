@@ -1,11 +1,15 @@
 import ReviewSection from '@/components/ReviewSection';
 import MovieSection from '@/components/MovieSection';
+import Header from '@/components/Header';
 
 export default function HomePage() {
   return (
-    <main className="pt-20 pb-24">
-      <ReviewSection />
-      <MovieSection />
-    </main>
+    <>
+      <Header />
+      <main className="pt-20 pb-24">
+        <ReviewSection />
+        <MovieSection />
+      </main>
+    </>
   );
 }
