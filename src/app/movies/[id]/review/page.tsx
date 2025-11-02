@@ -37,10 +37,10 @@ export default function ReviewPage() {
   return (
     <>
       <ReviewHeader />
-      <div className="min-h-screen bg-linear-to-b from-[#0a0a0f] to-[#0d0d19] text-gray-100 px-6 py-10 flex flex-col items-center">
+      <div className="min-h-screen bg-linear-to-b from-[#0a0a0f] to-[#0d0d19] text-gray-100 px-6 pt-20 py-10 flex flex-col items-center">
         <div className="max-w-md w-full flex flex-col items-center gap-6">
           {/* 🎞️ 영화 포스터 */}
-          <div className="w-[120px] h-[180px] relative rounded-lg overflow-hidden shadow-lg">
+          <div className="w-[125px] h-[180px] md:w-[180px] md:h-[270px] relative rounded-lg overflow-hidden shadow-lg">
             <Image src={movie.posterUrl} alt={movie.title} fill className="object-cover" priority />
           </div>
 
