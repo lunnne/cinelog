@@ -24,7 +24,7 @@ export default function ReviewCard({
     <div
       className="
         relative w-[260px] min-w-[260px] snap-center overflow-hidden rounded-2xl
-        p-4 flex flex-col gap-2
+        p-3 md:p-4 flex flex-col gap-2
         bg-[rgba(20,20,25,0.45)] backdrop-blur-xl
         border border-[rgba(120,90,255,0.25)]
         shadow-[0_8px_30px_rgba(0,0,0,0.6)]
@@ -50,7 +50,7 @@ export default function ReviewCard({
       </div>
 
       {/* 영화 제목 */}
-      <h3 className="mt-2 text-base font-semibold text-foreground truncate">{title}</h3>
+      <h3 className="mt-2 text-sm md:text-base font-semibold text-foreground truncate">{title}</h3>
 
       {/* 별점 */}
       <div className="flex gap-1 text-[#e2b714] drop-shadow-[0_0_6px_rgba(226,183,20,0.15)]">
