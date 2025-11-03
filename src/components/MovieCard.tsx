@@ -5,10 +5,9 @@ interface MovieCardProps {
   id: number;
   title: string;
   posterPath: string;
-  isFirst?: boolean; // 첫 번째 카드일 때 priority 적용
 }
 
-export default function MovieCard({ id, title, posterPath, isFirst }: MovieCardProps) {
+export default function MovieCard({ id, title, posterPath }: MovieCardProps) {
   return (
     <Link href={`/movies/${id}`} className="group block">
       <div className="relative md:w-[150px] md:h-[225px] w-[120px] h-[180px] shrink-0 text-center ">
@@ -24,8 +23,8 @@ export default function MovieCard({ id, title, posterPath, isFirst }: MovieCardP
             src={`https://image.tmdb.org/t/p/w500${posterPath}`}
             alt={title}
             fill
-            priority={isFirst} // ✅ 첫 번째 카드만 priority 적용
-            sizes="(max-width: 768px) 150px, 200px" // ✅ 반응형 크기 지정
+            loading="eager"
+            sizes="(max-width: 768px) 150px, 200px"
             className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
           />
         </div>

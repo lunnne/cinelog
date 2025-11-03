@@ -7,7 +7,6 @@ interface MovieCardProps {
   id: number;
   title: string;
   poster_path: string;
-  isFirst?: boolean; // 첫 번째 카드일 때 priority 적용
 }
 
 export default async function MovieSection() {
@@ -16,17 +15,13 @@ export default async function MovieSection() {
 
   return (
     <section className="px-6 mt-10">
-      <h2 className="md:text-xl text-lg font-semibold md:mb-5 mb-2 md:px-6 text-foreground flex items-center gap-2"><FireFlame color="#7c3aed" width={24} height={24} />지금 인기 폭발 중인 영화들</h2>
+      <h2 className="md:text-xl text-lg font-semibold md:mb-5 mb-2 md:px-6 text-foreground flex items-center gap-2">
+        <FireFlame color="#7c3aed" width={24} height={24} />
+        지금 인기 폭발 중인 영화들
+      </h2>
       <div className="flex overflow-x-auto gap-5 md:px-6 scrollbar-hide pt-5 pb-12">
-        {movies.map((movie: MovieCardProps, index: number) =>
-          movie.poster_path ? (
-          <MovieCard
-          key={movie.id}
-          id={movie.id}
-          title={movie.title} 
-          posterPath={movie.poster_path} 
-          isFirst={index === 0} />
-          ) : null
+        {movies.map((movie: MovieCardProps) =>
+          movie.poster_path ? <MovieCard key={movie.id} id={movie.id} title={movie.title} posterPath={movie.poster_path} /> : null
         )}
       </div>
     </section>

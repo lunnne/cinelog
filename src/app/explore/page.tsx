@@ -1,9 +1,16 @@
-export default function HomePage() {
-    return (
-      <main className="flex flex-col items-center justify-center min-h-screen bg-background text-foreground">
-        <h1 className="text-4xl font-bold mb-4">SIGN 🌌</h1>
-        <p className="text-muted-foreground">당신의 영화 기록을 시작하세요.</p>
-      </main>
-    );
-  }
-  
+import SearchBar from './components/searchBar';
+import SearchSuggestions from './components/SearchSuggestions';
+
+export default function ExplorePage() {
+  return (
+    <main className="min-h-screen bg-linear-to-b from-[#0a0a0f] to-[#0d0d19] text-gray-100 px-6 pt-20 flex flex-col items-center">
+      <div className="w-full max-w-2xl flex flex-col items-center gap-8">
+        {/* 🔍 검색창 */}
+        <SearchBar />
+
+        {/* 🎬 포커스 전 추천/인기 섹션 */}
+        <SearchSuggestions />
+      </div>
+    </main>
+  );
+}
