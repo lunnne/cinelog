@@ -17,7 +17,8 @@ export async function POST(req: Request) {
         movieId,
         rating,
         comment,
-        emotion,
+        location,
+        friend,
       },
     })
 

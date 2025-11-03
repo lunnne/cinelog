@@ -6,6 +6,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 import { format } from 'date-fns';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface ReviewFormProps {
   movie: {
@@ -22,21 +23,22 @@ export default function ReviewForm({ movie }: ReviewFormProps) {
   const [friend, setFriend] = useState('');
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
+  const router = useRouter();
 
-//   const handleSubmit = async () => {
-//     if (!rating || !comment) return alert('별점과 리뷰를 입력해주세요.');
+  const handleSubmit = async () => {
+    if (!rating || !comment) return alert('별점과 리뷰를 입력해주세요.');
 
-//     const res = await fetch('/api/reviews', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify({ movieId: id, rating, comment, watchedDate: date }),
-//     });
+    const res = await fetch('/api/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ movieId: movie.id, rating, comment, watchedDate: date, location, friend }),
+    });
 
-//     if (res.ok) router.push(`/movies/${id}`);
-//     else alert('리뷰 저장 중 오류가 발생했습니다.');
-//   };
+    if (res.ok) router.push(`/movies/${movie.id}`);
+    else alert('리뷰 저장 중 오류가 발생했습니다.');
+  };
   return (
-    <>
+    <form onSubmit={handleSubmit} className="w-full md:w-[400px] space-y-6">
       {/* 📅 날짜 선택 */}
       <div className="flex items-center justify-center gap-3 w-full md:w-[400px]">
         <CalendarIcon className="w-4 h-4 md:w-6 md:h-6 text-gray-400" />
@@ -113,9 +115,9 @@ export default function ReviewForm({ movie }: ReviewFormProps) {
       />
 
       {/* 💾 저장 버튼 */}
-      <button className="cinelog-btn max-w-lg text-sm md:text-base">
+      <button type="submit" className="cinelog-btn max-w-lg text-sm md:text-base">
         저장하기
       </button>
-    </>
+    </form>
   );
 }
