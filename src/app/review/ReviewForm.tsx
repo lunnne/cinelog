@@ -1,14 +1,21 @@
+'use client';
+
 import { Popover } from '@/components/ui/popover';
 import { CalendarIcon, MapPin, User, Star } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
 import { PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 import { format } from 'date-fns';
 import { useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
 
-export default function ReviewForm({ movie }: { movie: { title: string; posterUrl: string } }) {
-  const router = useRouter();
-  const { id } = useParams();
+interface ReviewFormProps {
+  movie: {
+    id: number;
+    title: string;
+    posterUrl: string;
+  };
+}
+
+export default function ReviewForm({ movie }: ReviewFormProps) {
   const [date, setDate] = useState<Date>(new Date());
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useState('');
@@ -16,18 +23,18 @@ export default function ReviewForm({ movie }: { movie: { title: string; posterUr
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
 
-  const handleSubmit = async () => {
-    if (!rating || !comment) return alert('별점과 리뷰를 입력해주세요.');
+//   const handleSubmit = async () => {
+//     if (!rating || !comment) return alert('별점과 리뷰를 입력해주세요.');
 
-    const res = await fetch('/api/reviews', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ movieId: id, rating, comment, watchedDate: date }),
-    });
+//     const res = await fetch('/api/reviews', {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({ movieId: id, rating, comment, watchedDate: date }),
+//     });
 
-    if (res.ok) router.push(`/movies/${id}`);
-    else alert('리뷰 저장 중 오류가 발생했습니다.');
-  };
+//     if (res.ok) router.push(`/movies/${id}`);
+//     else alert('리뷰 저장 중 오류가 발생했습니다.');
+//   };
   return (
     <>
       {/* 📅 날짜 선택 */}
@@ -106,7 +113,7 @@ export default function ReviewForm({ movie }: { movie: { title: string; posterUr
       />
 
       {/* 💾 저장 버튼 */}
-      <button className="cinelog-btn max-w-lg text-sm md:text-base" onClick={handleSubmit}>
+      <button className="cinelog-btn max-w-lg text-sm md:text-base">
         저장하기
       </button>
     </>
