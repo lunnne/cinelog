@@ -32,7 +32,7 @@ export default function BottomNav() {
                 }`}
               >
                 <div
-                  className={`flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 ${
+                  className={`flex items-center justify-center md:w-10 md:h-10 w-8 h-8 rounded-full transition-all duration-300 ${
                     isActive
                       ? "bg-violet-500/15 backdrop-blur-md border border-violet-400/20 shadow-inner"
                       : "hover:bg-white/5"
@@ -41,7 +41,7 @@ export default function BottomNav() {
                   <Icon size={22} />
                 </div>
                 <span
-                  className={`text-[11px] mt-1 transition-opacity ${
+                  className={`text-[10px] md:text-sm md:mt-1 transition-opacity ${
                     isActive ? "opacity-100" : "opacity-80"
                   }`}
                 >

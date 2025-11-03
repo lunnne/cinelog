@@ -11,7 +11,7 @@ interface MovieCardProps {
 export default function MovieCard({ id, title, posterPath, isFirst }: MovieCardProps) {
   return (
     <Link href={`/movies/${id}`} className="group block">
-      <div className="relative w-[150px] h-[225px] shrink-0 text-center ">
+      <div className="relative md:w-[150px] md:h-[225px] w-[120px] h-[180px] shrink-0 text-center ">
         <div
           className="relative w-full h-full overflow-hidden rounded-2xl 
                    border border-white/10 backdrop-blur-xl 
@@ -29,7 +29,7 @@ export default function MovieCard({ id, title, posterPath, isFirst }: MovieCardP
             className="object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
           />
         </div>
-        <p className="mt-2 text-sm font-medium text-foreground truncate">{title}</p>
+        <p className="mt-2 text-xs md:text-sm font-medium text-foreground truncate">{title}</p>
       </div>
     </Link>
   );

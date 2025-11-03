@@ -34,9 +34,9 @@ export default function ReviewSection() {
   ];
 
   return (
-    <section className="px-6 mt-10">
-      <h2 className="text-xl font-semibold mb-5 px-6 text-foreground flex items-center gap-2"><MultiBubble color="#7c3aed" width={24} height={24} />따끈한 리뷰 도착!</h2>
-      <div className="flex gap-5 px-6 overflow-x-auto snap-x scrollbar-hide pb-6 pt-5  ">
+    <section className="px-6 md:mt-10 mt-5">
+      <h2 className="text-lg md:text-xl font-semibold  md:px-6 md:mb-5 mb-2 px-3text-foreground flex items-center gap-2"><MultiBubble color="#7c3aed" width={24} height={24} />따끈한 리뷰 도착!</h2>
+      <div className="flex gap-5 md:px-6 overflow-x-auto snap-x scrollbar-hide pb-6 pt-5  ">
         {reviews.map((review, i) => (
           <ReviewCard key={i} title={review.title} content={review.comment} rating={review.rating} posterUrl={review.posterUrl} />
         ))}

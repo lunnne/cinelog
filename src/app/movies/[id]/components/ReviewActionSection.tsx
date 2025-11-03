@@ -9,18 +9,18 @@ interface ReviewActionSectionProps {
 export default function ReviewActionSection({ movieId }: ReviewActionSectionProps) {
   const router = useRouter();
   return (
-    <section className="border-y border-gray-800 mt-10 pt-8 pb-8 text-center">
+    <section className="border-y border-gray-800 mt-10 pt-6 pb-6 md:pt-8 md:pb-8 text-center">
       {/* 🎬 액션 버튼 */}
       <div className="flex justify-around gap-8 mb-8 text-gray-300">
-        <button className="flex flex-col items-center gap-1 hover:text-violet-400 transition transform hover:scale-105">
+        <button className="flex flex-col items-center gap-2 hover:text-violet-400 transition transform hover:scale-105">
           <Plus className="w-6 h-6" />
           <span className="text-sm">볼래요</span>
         </button>
-        <button className="flex flex-col items-center gap-1 hover:text-violet-400 transition transform hover:scale-105">
+        <button className="flex flex-col items-center gap-2 hover:text-violet-400 transition transform hover:scale-105">
           <Heart className="w-6 h-6" />
           <span className="text-sm">좋아요</span>
         </button>
-        <button className="flex flex-col items-center gap-1 hover:text-violet-400 transition transform hover:scale-105">
+        <button className="flex flex-col items-center gap-2 hover:text-violet-400 transition transform hover:scale-105">
           <CheckCircle className="w-6 h-6" />
           <span className="text-sm">봤어요</span>
         </button>
@@ -38,8 +38,8 @@ export default function ReviewActionSection({ movieId }: ReviewActionSectionProp
       </div>
 
       {/* ✍️ 리뷰 쓰러 가기 */}
-      <button onClick={() => router.push(`/movies/${movieId}/review`)} className="mt-6 cinelog-btn">
-        Cinelog 남기기 →
+      <button onClick={() => router.push(`/movies/${movieId}/review`)} className="mt-8 md:mt-15  cinelog-btn">
+      리뷰 쓰러 가기 →
       </button>
     </section>
   );

@@ -16,8 +16,8 @@ export default async function MovieSection() {
 
   return (
     <section className="px-6 mt-10">
-      <h2 className="text-xl font-semibold mb-5 px-6 text-foreground flex items-center gap-2"><FireFlame color="#7c3aed" width={24} height={24} />지금 인기 폭발 중인 영화들</h2>
-      <div className="flex overflow-x-auto gap-5 px-6 scrollbar-hide pt-5 pb-12">
+      <h2 className="md:text-xl text-lg font-semibold md:mb-5 mb-2 md:px-6 text-foreground flex items-center gap-2"><FireFlame color="#7c3aed" width={24} height={24} />지금 인기 폭발 중인 영화들</h2>
+      <div className="flex overflow-x-auto gap-5 md:px-6 scrollbar-hide pt-5 pb-12">
         {movies.map((movie: MovieCardProps, index: number) =>
           movie.poster_path ? (
           <MovieCard
