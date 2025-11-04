@@ -5,7 +5,7 @@ import { CalendarIcon, MapPin, User, Star } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
 import { PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 import { format } from 'date-fns';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface ReviewFormProps {
@@ -17,13 +17,20 @@ interface ReviewFormProps {
 }
 
 export default function ReviewForm({ movie }: ReviewFormProps) {
-  const [date, setDate] = useState<Date>(new Date());
+  const [date, setDate] = useState<Date | null>(null);
   const [open, setOpen] = useState(false);
   const [location, setLocation] = useState('');
   const [friend, setFriend] = useState('');
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
   const router = useRouter();
+
+  // ✅ only set date on client after mount
+  useEffect(() => {
+    setDate(new Date());
+  }, []);
+
+  if (!date) return null; // or a small skeleton while waiting
 
   const handleSubmit = async () => {
     if (!rating || !comment) return alert('별점과 리뷰를 입력해주세요.');

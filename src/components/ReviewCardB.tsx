@@ -35,7 +35,7 @@ export default function ReviewCard({ title, content, rating }: ReviewCardProps) 
           <Star
             key={i}
             size={20}
-            weight={i <= rating ? "fill" : "regular"}
+            fill={i <= rating ? "fill" : "regular"}
             className={`
               transition-all duration-300
               ${i <= rating
