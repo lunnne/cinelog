@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Star } from "lucide-react";
+import { Star, ThumbsUp, MessageCircle } from "lucide-react";
 
 interface ReviewCardProps {
   posterUrl: string;
@@ -9,7 +9,10 @@ interface ReviewCardProps {
   emotion: string; // 💜 💛 💙 💚 ...
   rating: number;
   comment: string;
-  user?: string;
+  userAvatar: string;
+  userName: string;
+  likes: number;
+  replies: number;
 }
 
 export default function ReviewCard({
@@ -18,60 +21,66 @@ export default function ReviewCard({
   emotion,
   rating,
   comment,
-  user,
+  userAvatar,
+  userName,
+  likes,
+  replies,
 }: ReviewCardProps) {
   return (
-    <div
-      className="
-        relative w-[260px] min-w-[260px] snap-center overflow-hidden rounded-2xl
-        p-3 md:p-4 flex flex-col gap-2
-        bg-[rgba(20,20,25,0.45)] backdrop-blur-xl
-        border border-[rgba(120,90,255,0.25)]
-        shadow-[0_8px_30px_rgba(0,0,0,0.6)]
-        transition-all duration-500
-        hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(124,58,237,0.35)]
-        before:absolute before:inset-0
-        before:rounded-2xl before:pointer-events-none
-        before:border before:border-[rgba(180,160,255,0.25)]
-        before:shadow-[inset_0_0_20px_rgba(124,58,237,0.2)]
-        before:opacity-70
-      "
-    >
-      {/* 포스터 */}
-      <div className="relative w-full h-[150px] rounded-lg overflow-hidden">
-        <Image
-          src={posterUrl}
-          alt={title}
-          fill
-          className="object-cover transition-transform duration-500 hover:scale-105"
-        />
-        {/* 감정 아이콘 */}
-        <div className="absolute top-2 right-2 text-xl">{emotion}</div>
-      </div>
-
-      {/* 영화 제목 */}
-      <h3 className="mt-2 text-sm md:text-base font-semibold text-foreground truncate">{title}</h3>
-
-      {/* 별점 */}
-      <div className="flex gap-1 text-[#e2b714] drop-shadow-[0_0_6px_rgba(226,183,20,0.15)]">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            size={16}
-            className={i < rating ? "text-[#e2b714] fill-current" : "text-gray-600"}
-          />
-        ))}
-      </div>
-
-      {/* 코멘트 */}
-      <p className="text-sm text-gray-300 mt-1 line-clamp-2 italic">“{comment}”</p>
-
-      {/* 작성자 */}
-      {user && (
-        <span className="text-xs text-gray-400 mt-1">
-          by <span className="text-gray-200 font-medium">{user}</span>
-        </span>
-      )}
+    <div className="glass w-full max-w-md rounded-2xl p-4 shadow-md transition hover:shadow-[0_0_15px_rgba(180,180,255,0.15)]">
+    {/* 유저 정보 */}
+    <div className="flex items-center gap-2 mb-3">
+      <Image
+        src={userAvatar}
+        alt={userName}
+        width={32}
+        height={32}
+        className="rounded-full"
+      />
+      <span className="text-sm font-medium text-gray-200">{userName}</span>
     </div>
+<hr className="my-2 border-white/10" />
+    {/* 영화 정보 */}
+    <div className="flex gap-3">
+      <Image
+        src={posterUrl}
+        alt={title}
+        width={60}
+        height={85}
+        className="rounded-md object-cover"
+      />
+
+      <div className="flex flex-col flex-1 justify-between">
+        <div>
+          <h3 className="font-semibold text-gray-100">{title}</h3>
+          <p className="text-sm text-gray-400 line-clamp-2">{comment}</p>
+        </div>
+
+        {/* 별점 */}
+        <div className="flex items-center mt-2">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star
+              key={i}
+              className={`w-4 h-4 ${
+                i < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-600"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+
+    {/* 좋아요 & 댓글 */}
+    <div className="flex items-center gap-4 mt-4 text-gray-400 text-sm">
+      <div className="flex items-center gap-1">
+        <ThumbsUp className="w-4 h-4" />
+        <span>{likes}</span>
+      </div>
+      <div className="flex items-center gap-1">
+        <MessageCircle className="w-4 h-4" />
+        <span>{replies}</span>
+      </div>
+    </div>
+  </div>
   );
 }

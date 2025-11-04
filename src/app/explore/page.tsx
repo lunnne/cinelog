@@ -1,6 +1,7 @@
 import SearchBar from './components/searchBar';
 import SearchSuggestions from './components/SearchSuggestions';
 import SearchResults from './components/SearchResults';
+import SearchHeader from '../movies/[id]/components/SearchHeader';
 
 async function getMovies(query: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/search?query=${query}`, { next: { revalidate: 3600 } });
@@ -13,6 +14,7 @@ export default async function ExplorePage({ searchParams }: { searchParams: { qu
 
   return (
     <main className="min-h-screen bg-linear-to-b from-[#0a0a0f] to-[#0d0d19] text-gray-100 px-6 pt-20 flex flex-col items-center">
+      <SearchHeader title="검색하기" />
       <div className="w-full max-w-2xl flex flex-col items-center gap-8">
         {/* 검색창 */}
         <SearchBar />
