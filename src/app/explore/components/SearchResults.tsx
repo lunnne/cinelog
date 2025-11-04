@@ -1,27 +1,32 @@
-import Image from 'next/image';
+import Image from "next/image"
 
-export default function SearchResults({ results }: { results: any[] }) {
-  if(results.length === 0) 
-    return <p className="text-gray-400 text-sm text-center py-4">검색 결과가 없습니다.</p>
-
+export default function SearchResults({ query, data }: { query: string, data: any }) {
   return (
-    <ul className="max-h-[400px] overflow-y-auto divide-y divide-white/10">
-      {results.map((movie) => (
-        <li key={movie.id} className="flex items-center gap-4 p-3 hover:bg-violet-500/10 cursor-pointer transition">
-          <div className="relative w-[40px] h-[60px] rounded-md overflow-hidden shrink-0">
-            <Image
-              src={movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}` : "/no-image.png"}
-              alt={movie.title}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="flex flex-col">
-            <p className="text-gray-100 font-medium text-sm">{movie.title}</p>
-            <span className="text-xs text-gray-500">{movie.release_date?.slice(0, 4) || "연도 미상"}</span>
-          </div>
-        </li>
-      ))}
-    </ul>
-  );
+    <div className="w-full flex flex-col items-start">
+      <h2 className="text-violet-300 text-lg mb-4">“{query}” 검색 결과</h2>
+      {data.results.length === 0 ? (
+        <p className="text-gray-500 text-center w-full mt-10 animate-fadeIn">
+          검색 결과가 없습니다.
+        </p>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 w-full">
+          {data.results.map((movie: any) => (
+            <div key={movie.id} className="flex flex-col items-center group">
+              <div className="relative w-[120px] h-[180px] rounded-xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform">
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <p className="text-xs text-center mt-2 text-gray-300 group-hover:text-violet-300 transition">
+                {movie.title}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }
