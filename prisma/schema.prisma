@@ -54,11 +54,13 @@ model Review {
   emotion   String
   location  String
   friend    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  likes     Like[]
+  likes     Int      @default(0)
+  replies   Int      @default(0)
   movie     Movie    @relation(fields: [movieId], references: [id], onDelete: Cascade)
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Like      Like[]
 
   @@unique([userId, movieId])
   @@map("reviews")
