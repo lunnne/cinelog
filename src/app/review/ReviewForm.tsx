@@ -116,7 +116,7 @@ export default function ReviewForm({ movie }: ReviewFormProps) {
       {/* 💭 리뷰 작성 */}
       <textarea
         placeholder="지금 떠오르는 감정을 남겨보세요."
-        className="w-full h-35 md:h-45 text-sm md:text-base bg-white/5 border border-violet-400/20 rounded-xl p-4 text-gray-200 focus:outline-none focus:border-violet-400/50 resize-none backdrop-blur-md"
+        className="w-full h-35 md:h-45 text-sm md:text-base bg-background border border-violet-400/20 rounded-xl p-4 text-gray-200 focus:outline-none focus:border-violet-400/30 resize-none backdrop-blur-md"
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       />

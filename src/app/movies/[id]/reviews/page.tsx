@@ -16,13 +16,12 @@ export default async function ReviewPage({ params }: { params: { id: string } })
   return (
     <>
       <ReviewHeader />
-      <div className="bg-background text-gray-100 md:px-6 px-10 pt-28 py-10 flex flex-col items-center">
+      <div className="bg-background text-gray-100 md:px-6 px-10 pt-23 md:pt-20 py-10 flex flex-col items-center ">
         <div className="max-w-lg w-full flex flex-col items-center gap-6">
           {/* 🎞️ 영화 포스터 */}
           <div className="w-[125px] h-[180px] md:w-[200px] md:h-[300px] md:mt-8 relative rounded-lg overflow-hidden shadow-lg">
             <Image src={movie.posterUrl} alt={movie.title} fill sizes="(max-width: 768px) 125px, 200px" className="object-cover" priority />
           </div>
-
           {/* 🎬 제목 */}
           <h1 className="text-lg md:text-2xl md:m-4 font-semibold text-white text-center">{movie.title}</h1>
           <ReviewForm movie={movie} />
