@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="pt-20 pb-24">
+      <main className="pt-20 pb-24 max-w-5xl mx-auto">
         <ReviewSection />
         <MovieSection />
       </main>

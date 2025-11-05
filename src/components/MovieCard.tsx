@@ -10,7 +10,7 @@ interface MovieCardProps {
 export default function MovieCard({ id, title, posterPath }: MovieCardProps) {
   return (
     <Link href={`/movies/${id}`} className="group block">
-      <div className="relative md:w-[150px] md:h-[225px] w-[120px] h-[180px] shrink-0 text-center ">
+      <div className="relative md:w-[180px] md:h-[270px] w-[120px] h-[180px] shrink-0 text-center ">
         <div
           className="relative w-full h-full overflow-hidden rounded-2xl 
                    border border-white/10 backdrop-blur-xl 

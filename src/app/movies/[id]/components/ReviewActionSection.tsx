@@ -30,7 +30,7 @@ export default function ReviewActionSection({ movieId }: ReviewActionSectionProp
       {/* ⭐ 별점 */}
       <div
         className="flex justify-center gap-x-4 md:gap-x-8 gap-y-2 text-3xl text-gray-600 mb-4 cursor-pointer"
-        onClick={() => router.push(`/movies/${movieId}/review`)}
+        onClick={() => router.push(`/movies/${movieId}/reviews`)}
       >
         {Array.from({ length: 5 }).map((_, i) => (
           <Star key={i} className="w-7 h-7 md:w-10 md:h-10 hover:text-violet-400 hover:scale-110 transition" />
@@ -38,7 +38,7 @@ export default function ReviewActionSection({ movieId }: ReviewActionSectionProp
       </div>
 
       {/* ✍️ 리뷰 쓰러 가기 */}
-      <button onClick={() => router.push(`/movies/${movieId}/review`)} className="mt-8 md:mt-15  cinelog-btn">
+      <button onClick={() => router.push(`/movies/${movieId}/reviews`)} className="mt-8 md:mt-15 cinelog-btn">
       리뷰 쓰러 가기 →
       </button>
     </section>

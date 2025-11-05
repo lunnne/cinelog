@@ -13,7 +13,7 @@ export default async function ExplorePage({ searchParams }: { searchParams: { qu
   const data = query ? await getMovies(query) : null;
 
   return (
-    <main className="min-h-screen bg-linear-to-b from-[#0a0a0f] to-[#0d0d19] text-gray-100 px-6 pt-20 flex flex-col items-center">
+    <main className="min-h-screen bg-background text-gray-100 px-6 pt-20 flex flex-col items-center">
       <SearchHeader title="검색하기" />
       <div className="w-full max-w-2xl flex flex-col items-center gap-8">
         {/* 검색창 */}

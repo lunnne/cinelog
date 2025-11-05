@@ -14,7 +14,7 @@ export default function WriewPage() {
   return (
     <>
       <ReviewHeader />
-      <div className="min-h-screen bg-linear-to-b from-[#0a0a0f] to-[#0d0d19] text-gray-100 px-6 pt-20 py-10 flex flex-col items-center">
+      <div className="min-h-screen bg-background text-gray-100 px-6 pt-20 py-10 flex flex-col items-center">
         {!movie ? (
           // 영화가 없으면 검색창을 보여준다.
           <SearchBar onMovieSelect={handleMovieSelect} />
