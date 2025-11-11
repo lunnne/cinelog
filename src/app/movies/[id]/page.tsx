@@ -43,7 +43,7 @@ export default function MovieDetailPage() {
   return (
     <>
       <Header />
-      <div className="relative w-full min-h-screen bg-linear-to-b from-[#0a0a0f] via-[#0b0b14] to-[#0d0d19] text-gray-100">
+      <div className="relative w-full min-h-screen bg-background text-gray-100">
         <MovieHeader backdropUrl={movie.backdropUrl} title={movie.title} />
         <div className="relative z-10 max-w-5xl mx-auto px-5 -mt-28 sm:-mt-36 pb-20">
           <MovieContents

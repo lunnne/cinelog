@@ -24,8 +24,7 @@ body {
 
 .cinelog-btn {
   @apply w-full mx-auto py-2 rounded-xl text-base md:text-xl font-semibold text-violet-200 
-  backdrop-blur-md bg-white/5 border border-violet-400/30 
-  hover:bg-violet-500/10 hover:border-violet-400/50 hover:text-white 
+  backdrop-blur-md border border-violet-400/20 hover:text-white 
   hover:shadow-[0_0_10px_rgba(167,139,250,0.4)] transition-all duration-300 
   flex justify-center items-center gap-2;
 }
