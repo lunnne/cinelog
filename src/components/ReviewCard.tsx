@@ -17,16 +17,16 @@ interface ReviewCardProps {
 
 export default function ReviewCard({ posterUrl, title, emotion, rating, comment, userAvatar, userName, likes, replies }: ReviewCardProps) {
   return (
-    <div className="w-full rounded-2xl p-4 transition bbg-linear-to-b from-[#0b0b0f]/80 to-[#0b0b0e]/40 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+    <div className="w-full rounded-2xl transition p-4 bg-linear-to-b from-[#0b0b0f]/80 to-[#0b0b0e]/40 border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
       {/* 유저 정보 */}
-      <div className="flex items-center gap-2 mb-3 md:mb-4">
+      <div className="flex items-center gap-2 pb-2">
         <Image src={userAvatar} alt={userName} width={32} height={32} className="rounded-full w-4 h-4 md:w-6 md:h-6" />
-        <span className="text-sm font-medium text-gray-200">{userName}</span>
+        <p className="text-sm font-medium text-gray-200">{userName}</p>
       </div>
       <hr className="my-2 border-white/10" />
-      {/* 영화 정보 */}
-      <div className="flex gap-3">
 
+      {/* 영화 정보 */}
+      <div className="flex gap-3 py-2">
         <div className="flex flex-col flex-1 justify-between">
           <div>
             <h3 className="font-semibold text-gray-100">{title}</h3>
@@ -40,11 +40,11 @@ export default function ReviewCard({ posterUrl, title, emotion, rating, comment,
             ))}
           </div>
         </div>
-            <Image src={posterUrl} alt={title} width={60} height={85} className="rounded-md object-cover" />
+        <Image src={posterUrl} alt={title} width={60} height={85} className="rounded-md object-cover" />
       </div>
 
       {/* 좋아요 & 댓글 */}
-      <div className="flex items-center gap-4 mt-4 text-gray-400 text-sm">
+      <div className="flex items-center gap-4 mt-2 text-gray-400 text-sm">
         <div className="flex items-center gap-1">
           <ThumbsUp className="w-4 h-4" />
           <span>{likes}</span>
