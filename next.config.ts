@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -23,6 +24,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // 🔥 여기가 중요!
+ experimental: {
+  serverActions: true,
+ },
 };
 
 export default nextConfig;
