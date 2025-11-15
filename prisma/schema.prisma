@@ -8,14 +8,16 @@ datasource db {
 }
 
 model User {
-  id            String            @id @default(uuid())
-  username      String            @unique
-  email         String            @unique
-  password      String
+  id            String   @id @default(uuid())
+  name          String?
+  username      String   @unique
+  email         String   @unique
+  password      String?   // ⭐ null 가능하게 변경
+  provider      String?   // ⭐ provider 저장
   profileImage  String?
-  createdAt     DateTime          @default(now())
-  followers     Follow[]          @relation("followerRelation")
-  following     Follow[]          @relation("followingRelation")
+  createdAt     DateTime  @default(now())
+  followers     Follow[]  @relation("followerRelation")
+  following     Follow[]  @relation("followingRelation")
   likes         Like[]
   reviews       Review[]
   movieStatuses UserMovieStatus[]
