@@ -44,6 +44,26 @@ export default function SignInPage() {
           Login
         </button>
       </form>
+      <div className="flex flex-col gap-4 p-8">
+      <button
+        onClick={() => signIn("google", { callbackUrl: "/" })}
+        className="border px-4 py-2 rounded"
+      >
+        Sign in with Google
+      </button>
+      <button
+        onClick={() => signIn("naver", { callbackUrl: "/" })}
+        className="border px-4 py-2 rounded"
+      >
+        Sign in with Naver
+      </button>
+      <button
+        onClick={() => signIn("kakao", { callbackUrl: "/" })}
+        className="border px-4 py-2 rounded"
+      >
+        Sign in with Email
+      </button>
+    </div>
     </main>
   );
 }
